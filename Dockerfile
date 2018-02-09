@@ -17,7 +17,8 @@ RUN \
   chmod -R 0777 /var/log/mysql && \
   cd /opt/configurability/src/mysql_config_translator && \
   pip --no-cache install --upgrade pip && \
-  pip --no-cache install --upgrade .
+  pip --no-cache install --upgrade . && \
+  sed -i "s|; max_input_vars = 1000|max_input_vars = 3000|" /etc/php/7.0/fpm/php.ini
 
 ENV DISABLE_PHPMYADMIN=0 \
     PMA_ARBITRARY=0 \
